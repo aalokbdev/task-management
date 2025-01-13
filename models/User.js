@@ -18,8 +18,8 @@ userSchema.pre('save', async function (next) {
 
 // Generate JWT
 userSchema.methods.getSignedJwtToken = function () {
-  return jwt.sign({ id: this._id, role: this.role }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+  return jwt.sign({ id: this._id, role: this.role }, process.env.JWT_SECRET || "secretOrPrivateKey", {
+    expiresIn: process.env.JWT_EXPIRE || "1d",
   });
 };
 

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/user", protect, getSingleUser)
 router.route('/').get(protect, getTasks).post(protect, authorize('Admin'), createTask);
-router.route('/:id').put(protect, authorize('Admin'), updateTask).delete(protect, authorize('Admin'), deleteTask);
+router.route('/:id').put(protect, authorize('Admin', 'User'), updateTask).delete(protect, authorize('Admin'), deleteTask);
 
 /**
  * @swagger
